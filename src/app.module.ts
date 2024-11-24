@@ -6,6 +6,7 @@ import { Partitioners } from 'kafkajs';
 import { ExamGateway } from './exam/exam.gateway';
 import { RedisService } from './redis/redis.service';
 import { ExamService } from './exam/exam.service';
+import { ENV } from './contents/env';
 
 @Module({
   imports: [
@@ -19,10 +20,10 @@ import { ExamService } from './exam/exam.service';
           },
           client: {
             clientId: `admin`,
-            brokers: ['192.168.97.64:9092'],
+            brokers: [ENV.KAFKA_BROKER],
           },
           consumer: {
-            groupId: `exam-group-${process.env.PORT}`, // Static group ID
+            groupId: `exam-group-${ENV.KAFKA_GROUP_PORT}`, // Static group ID
             allowAutoTopicCreation: true,
             sessionTimeout: 30000, // Adjust session timeout
             heartbeatInterval: 10000, // Adjust heartbeat interval

@@ -1,6 +1,7 @@
 import { Injectable, OnModuleDestroy, Logger } from '@nestjs/common';
 import Redis from 'ioredis';
 import Redlock, { Lock } from 'redlock';
+import { ENV } from 'src/contents/env';
 import { ExamRoomDto } from 'src/types';
 
 const TIMER_LOCK_PREFIX = 'timer-lock:';
@@ -13,7 +14,7 @@ export class RedisService implements OnModuleDestroy {
 
   constructor() {
     // this.client = new Redis({ host: 'localhost', port: 6379 });
-    this.client = new Redis('redis://192.168.97.64:6379');
+    this.client = new Redis(ENV.REDIS_URL);
 
     this.lockService = new Redlock([this.client], {
       retryCount: 10, // retry if lock is not acquired immediately

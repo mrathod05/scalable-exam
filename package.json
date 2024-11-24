@@ -26,6 +26,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/platform-socket.io": "^10.4.4",
     "@nestjs/websockets": "^10.4.4",
+    "dotenv": "^16.4.5",
     "ioredis": "^5.4.1",
     "kafkajs": "^2.2.4",
     "redlock": "^5.0.0-beta.2",

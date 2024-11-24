@@ -4,11 +4,12 @@ import { AppModule } from './app.module';
 import { IoAdapter } from '@nestjs/platform-socket.io';
 import { Partitioners } from 'kafkajs';
 import { Logger } from '@nestjs/common';
+import { ENV } from './contents/env';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const port = process.env.PORT || 4000;
+  const port = ENV.APP_PORT || 4000;
 
   const groupId = `exam-group-${port}`;
 
@@ -20,7 +21,7 @@ async function bootstrap() {
       },
       client: {
         clientId: `admin`,
-        brokers: ['192.168.97.64:9092'],
+        brokers: [ENV.KAFKA_BROKER],
       },
       consumer: {
         groupId: groupId, // Static group ID
