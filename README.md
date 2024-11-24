@@ -23,7 +23,7 @@ This project showcases a scalable and real-time exam management system developed
 
 ### Prerequisites
 
-- Node.js (v16+)
+- Node.js (v20+)
 - Redis (Single instance)
 - Kafka (Cluster recommended for scaling)
 - Docker (Optional, for containerized services)
